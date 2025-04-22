@@ -37,8 +37,13 @@ struct stQuizz
 // Returns a random number between From and To
 int RandomNumber(short From, short To)
 {
-    int Random = rand() % (To - From + 1) + From;
-    return Random;
+    return rand() % (To - From + 1) + From;
+}
+
+// Returns a random operation type
+enOperationType GetRandomOperationType()
+{
+    return (enOperationType)RandomNumber(1, 4);
 }
 
 // Reads how many questions the user wants to answer (1 to 10)
@@ -111,8 +116,12 @@ stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OpTyp
     {
         QuestionLevel = (enQuestionLevel)RandomNumber(1, 3);
     }
-    //TODO: Continue implementing GenerateQuestion after RandomNumber is implemented and tested.
 
+    if (OpType == enOperationType::MixOp)
+    {
+        OpType = GetRandomOperationType();
+    }
+    // TODO: Continue implementing GenerateQuestion after GetRandomOperationType is implemented and tested.
 }
 
 int main() {
