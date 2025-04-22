@@ -34,6 +34,13 @@ struct stQuizz
     bool isPass = false;
 };
 
+// Returns a random number between From and To
+int RandomNumber(short From, short To)
+{
+    int Random = rand() % (To - From + 1) + From;
+    return Random;
+}
+
 // Reads how many questions the user wants to answer (1 to 10)
 short ReadHowManyQuestions()
 {
@@ -92,6 +99,20 @@ int SimpleCalculator(int Number1, int Number2, enOperationType OpType)
     default:
         return Number1 + Number2;
     }
+}
+
+
+// Generates a single math question based on level and operation type
+stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OpType)
+{
+    stQuestion Question;
+
+    if (QuestionLevel == enQuestionLevel::Mix)
+    {
+        QuestionLevel = (enQuestionLevel)RandomNumber(1, 3);
+    }
+    //TODO: Continue implementing GenerateQuestion after RandomNumber is implemented and tested.
+
 }
 
 int main() {
