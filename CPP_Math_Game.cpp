@@ -121,7 +121,35 @@ stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OpTyp
     {
         OpType = GetRandomOperationType();
     }
-    // TODO: Continue implementing GenerateQuestion after GetRandomOperationType is implemented and tested.
+
+    Question.OperationType = OpType;
+    Question.QuestionLevel = QuestionLevel;
+
+    // Set number range based on level
+    switch (QuestionLevel)
+    {
+    case enQuestionLevel::EasyLevel:
+        Question.Number1 = RandomNumber(1, 10);
+        Question.Number2 = RandomNumber(1, 10);
+        Question.CorrectAnswer = SimpleCalculator(Question.Number1, Question.Number2, Question.OperationType);
+
+        return Question;
+
+    case enQuestionLevel::MedLevel:
+        Question.Number1 = RandomNumber(10, 50);
+        Question.Number2 = RandomNumber(10, 50);
+        Question.CorrectAnswer = SimpleCalculator(Question.Number1, Question.Number2, Question.OperationType);
+
+        return Question;
+
+    case enQuestionLevel::HardLevel:
+        Question.Number1 = RandomNumber(50, 100);
+        Question.Number2 = RandomNumber(50, 100);
+        Question.CorrectAnswer = SimpleCalculator(Question.Number1, Question.Number2, Question.OperationType);
+
+        return Question;
+    }
+    return Question;
 }
 
 int main() {
