@@ -34,6 +34,47 @@ struct stQuizz
     bool isPass = false;
 };
 
+// Reads how many questions the user wants to answer (1 to 10)
+short ReadHowManyQuestions()
+{
+    short NumberOfQuestions;
+    do
+    {
+        cout << "How Many Questions do you want to answer ? ";
+        cin >> NumberOfQuestions;
+
+    } while (NumberOfQuestions < 1 || NumberOfQuestions > 10);
+    return NumberOfQuestions;
+}
+
+// Reads the difficulty level from user
+enQuestionLevel ReadQuestionsLevel()
+{
+    short QuestionLevel = 0;
+
+    do
+    {
+        cout << "Enter Questions Level [1] Easy, [2] med, [3] Hard, [4] Mix ?";
+        cin >> QuestionLevel;
+
+    } while (QuestionLevel < 1 || QuestionLevel > 4);
+
+    return static_cast<enQuestionLevel>(QuestionLevel);
+}
+
+enOperationType ReadOpType()
+{
+    short OpType;
+    do
+    {
+        cout << "Enter Operation Type [1] Add, [2] Sub, [3] Mul, [4] Div, [5] Mix ? ";
+        cin >> OpType;
+
+    } while (OpType < 1 || OpType >5);
+
+    return static_cast<enOperationType>(OpType);
+
+}
 int main() {
 
 
