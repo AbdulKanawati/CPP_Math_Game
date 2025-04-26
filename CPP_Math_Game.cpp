@@ -187,8 +187,8 @@ void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber)
     cout << "Question [" << QuestionNumber + 1 << "/" << Quizz.NumberOfQuestions << "] \n\n";
     cout << Quizz.QuestionList[QuestionNumber].Number1 << endl;
     cout << Quizz.QuestionList[QuestionNumber].Number2 << endl;
-    cout << GetOpTypeSympole();   //TODO:4 Continue implementing after GetOpTypeSympole
-
+    cout << GetOpTypeSympole(Quizz.QuestionList[QuestionNumber].OperationType);  
+    cout << "--------" << endl;
 }
 
 // Loops through all questions to ask and correct answers
