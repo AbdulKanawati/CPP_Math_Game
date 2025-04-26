@@ -251,6 +251,23 @@ void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
     Quizz.isPass = (Quizz.NumberOfRightAnswers >= Quizz.NumberOfWrongAnswers);
 }
 
+// Returns final result as a string
+string GetFinalResults(bool Pass)
+{
+    if (Pass)
+        return "PASS :-)";
+    else
+        return "Fail _-(";
+}
+// Prints the final results of the quiz
+void PrintQuizzResults(stQuizz Quizz)
+{
+    cout << "\n";
+    cout << "----------------------------------\n\n";
+    cout << " Final Results is " << GetFinalResults(Quizz.isPass);
+    //TODO:3 Continue implementing after GetFinalResults
+}
+
 // Handles one full round of the math game
 void PlayMathGame()
 {
@@ -263,6 +280,7 @@ void PlayMathGame()
     GenerateQuizzQuestions(Quizz);
     AskAndCorrectQuestionListAnswers(Quizz);
 
+    PrintQuizzResults(Quizz);
     //TODO:2 Continue implementing after AskAndCorrectQuestionListAnswers
 }
 
