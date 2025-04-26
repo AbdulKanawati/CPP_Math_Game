@@ -64,6 +64,16 @@ enOperationType GetRandomOperationType()
     return (enOperationType)RandomNumber(1, 4);
 }
 
+// Sets screen color and plays a sound based on correctness
+void SetScreenColor(bool Right)
+{
+    if (Right)
+        system("color 2F");
+    else
+        system("color 4F");
+    cout << "\a";
+}
+
 // Reads how many questions the user wants to answer (1 to 10)
 short ReadHowManyQuestions()
 {
@@ -198,6 +208,32 @@ void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber)
     cout << "--------" << endl;
 }
 
+// Checks if answer is correct and updates stats
+void CorrectTheQuestionNumber(stQuizz& Quizz, short QuestionNumber)
+{
+    if (Quizz.QuestionList[QuestionNumber].PlayerAnswer != Quizz.QuestionList[QuestionNumber].CorrectAnswer)
+    {
+        Quizz.QuestionList[QuestionNumber].AnswerResult = false;
+        Quizz.NumberOfWrongAnswers++;
+
+        cout << "Wrong Answer :-( \n";
+        cout << "The right answer is: ";
+        cout << Quizz.QuestionList[QuestionNumber].CorrectAnswer;
+        cout << "\n";
+    }
+    else
+    {
+        Quizz.QuestionList[QuestionNumber].AnswerResult = true;
+        Quizz.NumberOfRightAnswers++;
+
+        cout << "Right Answer :-) \n";
+    }
+    cout << endl;
+
+    SetScreenColor(Quizz.QuestionList[QuestionNumber].AnswerResult);
+    //TODO:4 Continue implementing after SetScreenColor
+}
+
 // Loops through all questions to ask and correct answers
 void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
 {
@@ -206,8 +242,9 @@ void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
         PrintTheQuestion(Quizz, QuestionNumber);
 
         Quizz.QuestionList[QuestionNumber].PlayerAnswer = ReadQuestionAnswer();
-        //TODO:3 Continue implementing after ReadQuestionAnswer
 
+        CorrectTheQuestionNumber(Quizz, QuestionNumber);
+        //TODO:3 Continue implementing after CorrectTheQuestionNumber
 
     }
 
