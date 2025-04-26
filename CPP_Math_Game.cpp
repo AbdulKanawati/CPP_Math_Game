@@ -266,8 +266,8 @@ string GetFinalResults(bool Pass)
     else
         return "Fail _-(";
 }
-// Prints the final results of the quiz
 
+// Prints the final results of the quiz
 void PrintQuizzResults(stQuizz Quizz)
 {
     cout << "\n";
@@ -277,7 +277,10 @@ void PrintQuizzResults(stQuizz Quizz)
 
     cout << "Number of Questions: " << Quizz.NumberOfQuestions << endl;
     cout << "Questions Level    : " << GetQuestionLevelText(Quizz.QuestionLevel) << endl;
-    //TODO:3 Continue implementing after GetQuestionLevelText
+    cout << "OpType             : " << GetOpTypeSympole(Quizz.OpType) << endl;
+    cout << "Number of Right Answers: " << Quizz.NumberOfRightAnswers << endl;
+    cout << "Number of Wrong Answers: " << Quizz.NumberOfWrongAnswers << endl;
+    cout << "----------------------------------\n";
 }
 
 // Handles one full round of the math game
