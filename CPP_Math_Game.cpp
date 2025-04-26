@@ -106,7 +106,6 @@ int SimpleCalculator(int Number1, int Number2, enOperationType OpType)
     }
 }
 
-
 // Generates a single math question based on level and operation type
 stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OpType)
 {
@@ -150,6 +149,16 @@ stQuestion GenerateQuestion(enQuestionLevel QuestionLevel, enOperationType OpTyp
         return Question;
     }
     return Question;
+}
+
+// Fills the quiz with generated questions
+void GenerateQuizzQuestions(stQuizz& Quizz)
+{
+    for (short Question = 0; Question < Quizz.NumberOfQuestions; Question++)
+    {
+        Quizz.QuestionList[Question] = GenerateQuestion(Quizz.QuestionLevel, Quizz.OpType);
+    }
+
 }
 
 int main() {
