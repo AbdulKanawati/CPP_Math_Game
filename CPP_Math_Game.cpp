@@ -231,7 +231,6 @@ void CorrectTheQuestionNumber(stQuizz& Quizz, short QuestionNumber)
     cout << endl;
 
     SetScreenColor(Quizz.QuestionList[QuestionNumber].AnswerResult);
-    //TODO:4 Continue implementing after SetScreenColor
 }
 
 // Loops through all questions to ask and correct answers
@@ -248,7 +247,7 @@ void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
 
     }
 
-    // Determine pass/fail based on number of right answers
+    // Determine pass/fail based on number of right answers.
     Quizz.isPass = (Quizz.NumberOfRightAnswers >= Quizz.NumberOfWrongAnswers);
 }
 
