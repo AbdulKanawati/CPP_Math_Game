@@ -179,6 +179,13 @@ void GenerateQuizzQuestions(stQuizz& Quizz)
 
 }
 
+// Reads player's answer from input
+int ReadQuestionAnswer()
+{
+    int Answer = 0;
+    cin >> Answer;
+    return Answer;
+}
 
 // Displays a question on screen
 void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber)
@@ -198,7 +205,8 @@ void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
     {
         PrintTheQuestion(Quizz, QuestionNumber);
 
-        //TODO:3 Continue implementing after PrintTheQuestion
+        Quizz.QuestionList[QuestionNumber].PlayerAnswer = ReadQuestionAnswer();
+        //TODO:3 Continue implementing after ReadQuestionAnswer
 
 
     }
