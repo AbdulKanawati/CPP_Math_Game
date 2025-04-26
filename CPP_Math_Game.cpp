@@ -294,9 +294,7 @@ void PlayMathGame()
 
     GenerateQuizzQuestions(Quizz);
     AskAndCorrectQuestionListAnswers(Quizz);
-
     PrintQuizzResults(Quizz);
-    //TODO:2 Continue implementing after AskAndCorrectQuestionListAnswers
 }
 
 
