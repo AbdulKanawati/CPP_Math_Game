@@ -40,6 +40,24 @@ int RandomNumber(short From, short To)
     return rand() % (To - From + 1) + From;
 }
 
+// Returns the symbol of the operation type as a string
+string GetOpTypeSympole(enOperationType OpType)
+{
+    switch (OpType)
+    {
+    case enOperationType::Add:
+        return "+";
+    case enOperationType::Sub:
+        return "-";
+    case enOperationType::Mult:
+        return "x";
+    case enOperationType::Div:
+        return "/";
+    default:
+        return "Mix";
+    }
+}
+
 // Returns a random operation type
 enOperationType GetRandomOperationType()
 {
@@ -161,6 +179,50 @@ void GenerateQuizzQuestions(stQuizz& Quizz)
 
 }
 
+
+// Displays a question on screen
+void PrintTheQuestion(stQuizz& Quizz, short QuestionNumber)
+{
+    cout << "\n";
+    cout << "Question [" << QuestionNumber + 1 << "/" << Quizz.NumberOfQuestions << "] \n\n";
+    cout << Quizz.QuestionList[QuestionNumber].Number1 << endl;
+    cout << Quizz.QuestionList[QuestionNumber].Number2 << endl;
+    cout << GetOpTypeSympole();   //TODO:4 Continue implementing after GetOpTypeSympole
+
+}
+
+// Loops through all questions to ask and correct answers
+void AskAndCorrectQuestionListAnswers(stQuizz& Quizz)
+{
+    for (short QuestionNumber = 0; QuestionNumber < Quizz.NumberOfQuestions; QuestionNumber++)
+    {
+        PrintTheQuestion(Quizz, QuestionNumber);
+
+        //TODO:3 Continue implementing after PrintTheQuestion
+
+
+    }
+
+    // Determine pass/fail based on number of right answers
+    Quizz.isPass = (Quizz.NumberOfRightAnswers >= Quizz.NumberOfWrongAnswers);
+}
+
+// Handles one full round of the math game
+void PlayMathGame()
+{
+    stQuizz Quizz;
+
+    Quizz.NumberOfQuestions = ReadHowManyQuestions();
+    Quizz.QuestionLevel = ReadQuestionsLevel();
+    Quizz.OpType = ReadOpType();
+
+    GenerateQuizzQuestions(Quizz);
+    AskAndCorrectQuestionListAnswers(Quizz);
+
+    //TODO:2 Continue implementing after AskAndCorrectQuestionListAnswers
+}
+
+
 // Clears the screen and resets the color
 void ResetScreen()
 {
@@ -176,7 +238,9 @@ void StartGame()
     do
     {
         ResetScreen();
+        PlayMathGame();
 
+        //TODO:1 Continue implementing after PlayMathGame
 
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
 }
