@@ -161,8 +161,28 @@ void GenerateQuizzQuestions(stQuizz& Quizz)
 
 }
 
-int main() {
+// Clears the screen and resets the color
+void ResetScreen()
+{
+    system("cls");
+    system("color 0F");
+}
 
+// Main game loop allowing user to replay
+void StartGame()
+{
+    char PlayAgain = 'Y';
+
+    do
+    {
+        ResetScreen();
+
+
+    } while (PlayAgain == 'Y' || PlayAgain == 'y');
+}
+
+int main() {
+    srand((unsigned)time(NULL));  // Seed the random number generator.
 
     return 0;
 }
