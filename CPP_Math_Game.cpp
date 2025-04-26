@@ -58,6 +58,13 @@ string GetOpTypeSympole(enOperationType OpType)
     }
 }
 
+// Converts the question level enum to its corresponding text
+string GetQuestionLevelText(enQuestionLevel QuestionLevel)
+{
+    string arrQuestionLevelText[4] = { "Easy","Med","Hard","Mix" };
+    return arrQuestionLevelText[QuestionLevel - 1];
+}
+
 // Returns a random operation type
 enOperationType GetRandomOperationType()
 {
@@ -260,12 +267,17 @@ string GetFinalResults(bool Pass)
         return "Fail _-(";
 }
 // Prints the final results of the quiz
+
 void PrintQuizzResults(stQuizz Quizz)
 {
     cout << "\n";
     cout << "----------------------------------\n\n";
     cout << " Final Results is " << GetFinalResults(Quizz.isPass);
-    //TODO:3 Continue implementing after GetFinalResults
+    cout << "\n----------------------------------\n\n";
+
+    cout << "Number of Questions: " << Quizz.NumberOfQuestions << endl;
+    cout << "Questions Level    : " << GetQuestionLevelText(Quizz.QuestionLevel) << endl;
+    //TODO:3 Continue implementing after GetQuestionLevelText
 }
 
 // Handles one full round of the math game
