@@ -315,13 +315,14 @@ void StartGame()
         ResetScreen();
         PlayMathGame();
 
-        //TODO:1 Continue implementing after PlayMathGame
-
+        cout << endl << "Dp ypu want play again? Y/N?";
+        cin >> PlayAgain;
     } while (PlayAgain == 'Y' || PlayAgain == 'y');
 }
 
 int main() {
-    srand((unsigned)time(NULL));  // Seed the random number generator.
 
+    srand((unsigned)time(NULL));  // Seed the random number generator.
+    StartGame(); // Start the game
     return 0;
 }
